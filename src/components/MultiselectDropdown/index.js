@@ -8,23 +8,38 @@ const options = [
   { label: "Three", value: 3 },
 ];
 
+const filterOptions = (options, filter) => {
+  const optionIncludesText = (option) =>
+    (option.label || "").toLowerCase().includes(filter);
+
+  return options.filter(optionIncludesText);
+};
+
 class MultiselectDropdown extends Component {
   state = {
     selected: [],
   };
 
   render() {
-    const { _height: height, _width: width } = this.props;
+    const {
+      _height: height,
+      _width: width,
+      allItemsAreSelectedLabel,
+      searchLabel,
+      selectAllLabel,
+      selectSomeItemsLabel,
+    } = this.props;
     const { selected } = this.state;
 
     return (
       <MultiSelect
+        filterOptions={filterOptions}
         options={options}
         overrideStrings={{
-          selectSomeItems: "Select Some items...",
-          allItemsAreSelected: "All Items are Selected",
-          selectAll: "Select All",
-          search: "Search",
+          selectSomeItems: selectSomeItemsLabel,
+          allItemsAreSelected: allItemsAreSelectedLabel,
+          selectAll: selectAllLabel,
+          search: searchLabel,
         }}
         selected={selected}
         onSelectedChanged={(selected) => this.setState({ selected })}

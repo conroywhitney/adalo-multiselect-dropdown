@@ -5,6 +5,31 @@
   "displayName": "MultiSelect Dropdown",
   "dynamic": true,
   "icon": "./icon.png",
-  "props": [],
+  "props": [
+    {
+      "name": "selectSomeItemsLabel",
+      "displayName": "'Select' Label",
+      "type": "text",
+      "default": "Select some items..."
+    },
+    {
+      "name": "allItemsAreSelectedLabel",
+      "displayName": "'All Selected' Label",
+      "type": "text",
+      "default": "All items are selected"
+    },
+    {
+      "name": "selectAllLabel",
+      "displayName": "'Select All' Label",
+      "type": "text",
+      "default": "Select all"
+    },
+    {
+      "name": "searchLabel",
+      "displayName": "'Search' Label",
+      "type": "text",
+      "default": "Search"
+    }
+  ],
   "resizeX": true
 }
