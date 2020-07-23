@@ -23,30 +23,38 @@
       "displayName": "Item Value",
       "type": "text",
       "default": "value"
-    },
+    }
+  ],
+  "childComponents": [
     {
-      "name": "selectSomeItems",
-      "displayName": "'Select' Label",
-      "type": "text",
-      "default": "Select some items..."
-    },
-    {
-      "name": "allItemsAreSelected",
-      "displayName": "'All Selected' Label",
-      "type": "text",
-      "default": "All items are selected"
-    },
-    {
-      "name": "selectAll",
-      "displayName": "'Select All' Label",
-      "type": "text",
-      "default": "Select all"
-    },
-    {
-      "name": "search",
-      "displayName": "'Search' Label",
-      "type": "text",
-      "default": "Search"
+      "name": "stringOverrides",
+      "displayName": "String Overrides",
+      "props": [
+        {
+          "name": "selectSomeItems",
+          "displayName": "Select",
+          "type": "text",
+          "default": "Select some items..."
+        },
+        {
+          "name": "allItemsAreSelected",
+          "displayName": "All Selected",
+          "type": "text",
+          "default": "All items are selected"
+        },
+        {
+          "name": "selectAll",
+          "displayName": "Select All",
+          "type": "text",
+          "default": "Select all"
+        },
+        {
+          "name": "search",
+          "displayName": "Search",
+          "type": "text",
+          "default": "Search"
+        }
+      ]
     }
   ],
   "resizeX": true

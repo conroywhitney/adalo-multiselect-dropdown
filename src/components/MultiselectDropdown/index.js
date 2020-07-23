@@ -58,11 +58,11 @@ class MultiselectDropdown extends Component {
   }
 
   render() {
-    const { _height: height, _width: width } = this.props;
+    const { _height: height, _width: width, stringOverrides } = this.props;
     const { selected } = this.state;
     const overrideStrings = pick(
       ["allItemsAreSelected", "search", "selectAll", "selectSomeItems"],
-      this.props
+      stringOverrides
     );
 
     return (
