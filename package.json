@@ -1,0 +1,33 @@
+{
+  "name": "multiselect-dropdown",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "start": "adalo dev",
+    "build": "adalo build",
+    "login": "adalo login"
+  },
+  "peerDependencies": {
+    "react": ">=16",
+    "react-dom": ">=16",
+    "react-native": "*"
+  },
+  "adalo": {
+    "displayName": "Multiselect Dropdown",
+    "components": [
+      {
+        "name": "MultiselectDropdown",
+        "manifest": "./src/components/MultiselectDropdown/manifest.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@adalo/cli": "^0.0.38",
+    "prettier": "^2.0.5",
+    "react": "^16.5.2",
+    "react-art": "^16.6.0",
+    "react-dom": "^16.5.2",
+    "react-native-web": "^0.9.5"
+  }
+}
