@@ -1,20 +1,10 @@
 {
-  "displayName": "Multiselect Dropdown",
-  "defaultWidth": 160,
-  "defaultHeight": 24,
   "components": "./index.js",
-  "props": [
-    {
-      "name": "text",
-      "displayName": "Text",
-      "type": "text",
-      "default": "Happy Hacking"
-    },
-    {
-      "name": "color",
-      "displayName": "Color",
-      "type": "color",
-      "default": "#00A898"
-    }
-  ]
+  "defaultHeight": 36,
+  "defaultWidth": 300,
+  "displayName": "MultiSelect Dropdown",
+  "dynamic": true,
+  "icon": "./icon.png",
+  "props": [],
+  "resizeX": true
 }

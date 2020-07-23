@@ -6,4 +6,4 @@ export const components = {
   MultiselectDropdown
 }
 
-export const config = {"displayName":"Multiselect Dropdown","name":"multiselect-dropdown","version":"dev","components":[{"name":"MultiselectDropdown","displayName":"Multiselect Dropdown","defaultWidth":160,"defaultHeight":24,"props":[{"name":"text","displayName":"Text","type":"text","default":"Happy Hacking"},{"name":"color","displayName":"Color","type":"color","default":"#00A898"}]}]}
+export const config = {"displayName":"Multiselect Dropdown","name":"multiselect-dropdown","version":"dev","components":[{"name":"MultiselectDropdown","displayName":"MultiSelect Dropdown","icon":"./icon.png","defaultWidth":300,"defaultHeight":36,"props":[],"resizeX":true}]}
