@@ -7,6 +7,24 @@
   "icon": "./icon.png",
   "props": [
     {
+      "name": "itemList",
+      "displayName": "Item List",
+      "type": "list",
+      "default": ""
+    },
+    {
+      "name": "itemLabel",
+      "displayName": "Item Label",
+      "type": "text",
+      "default": "label"
+    },
+    {
+      "name": "itemValue",
+      "displayName": "Item Value",
+      "type": "text",
+      "default": "value"
+    },
+    {
       "name": "selectSomeItemsLabel",
       "displayName": "'Select' Label",
       "type": "text",

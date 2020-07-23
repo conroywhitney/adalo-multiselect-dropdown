@@ -31,6 +31,7 @@
     "react-native-web": "^0.9.5"
   },
   "dependencies": {
-    "@khanacademy/react-multi-select": "^0.3.3"
+    "@khanacademy/react-multi-select": "^0.3.3",
+    "ramda": "^0.27.0"
   }
 }
