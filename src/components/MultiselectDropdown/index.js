@@ -52,9 +52,11 @@ class MultiselectDropdown extends Component {
   }
 
   handleSelectedChanged(selected) {
+    const { selectChangedAction } = this.props;
+
     this.setState({ selected });
 
-    console.log("handleSelectedChanged", "selected", selected);
+    selectChangedAction(selected);
   }
 
   render() {

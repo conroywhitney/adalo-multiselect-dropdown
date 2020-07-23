@@ -23,6 +23,17 @@
       "displayName": "Item Value",
       "type": "text",
       "default": "value"
+    },
+    {
+      "displayName": "Selected Changed",
+      "name": "selectChangedAction",
+      "type": "action",
+      "arguments": [
+        {
+          "type": "text",
+          "displayName": "Selected Items"
+        }
+      ]
     }
   ],
   "childComponents": [
