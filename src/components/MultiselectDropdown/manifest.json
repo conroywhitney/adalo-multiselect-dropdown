@@ -25,25 +25,25 @@
       "default": "value"
     },
     {
-      "name": "selectSomeItemsLabel",
+      "name": "selectSomeItems",
       "displayName": "'Select' Label",
       "type": "text",
       "default": "Select some items..."
     },
     {
-      "name": "allItemsAreSelectedLabel",
+      "name": "allItemsAreSelected",
       "displayName": "'All Selected' Label",
       "type": "text",
       "default": "All items are selected"
     },
     {
-      "name": "selectAllLabel",
+      "name": "selectAll",
       "displayName": "'Select All' Label",
       "type": "text",
       "default": "Select all"
     },
     {
-      "name": "searchLabel",
+      "name": "search",
       "displayName": "'Search' Label",
       "type": "text",
       "default": "Search"
