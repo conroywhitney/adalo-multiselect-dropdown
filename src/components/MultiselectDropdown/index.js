@@ -78,6 +78,4 @@ class MultiselectDropdown extends Component {
   }
 }
 
-const styles = StyleSheet.create({});
-
 export default MultiselectDropdown;
