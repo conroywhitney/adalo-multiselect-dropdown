@@ -24,6 +24,7 @@ class MultiselectDropdown extends Component {
 
     this.generateOption = this.generateOption.bind(this);
     this.generateOptions = this.generateOptions.bind(this);
+    this.handleSelectedChanged = this.handleSelectedChanged.bind(this);
 
     this.state = {
       selected: [],
@@ -50,6 +51,12 @@ class MultiselectDropdown extends Component {
     return compose(reject(isNil), uniq, map(this.generateOption))(itemList);
   }
 
+  handleSelectedChanged(selected) {
+    this.setState({ selected });
+
+    console.log("handleSelectedChanged", "selected", selected);
+  }
+
   render() {
     const { _height: height, _width: width } = this.props;
     const { selected } = this.state;
@@ -64,7 +71,7 @@ class MultiselectDropdown extends Component {
         options={this.generateOptions()}
         overrideStrings={overrideStrings}
         selected={selected}
-        onSelectedChanged={(selected) => this.setState({ selected })}
+        onSelectedChanged={this.handleSelectedChanged}
         styles={{ height, width }}
       />
     );
