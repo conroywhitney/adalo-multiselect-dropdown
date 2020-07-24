@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "main": "index.js",
+  "author": "Conroy Whitney",
+  "description": "Select multiple items from a dynamically-generated list",
   "scripts": {
     "start": "adalo dev",
     "build": "adalo build",
@@ -20,7 +22,8 @@
         "name": "MultiselectDropdown",
         "manifest": "./src/components/MultiselectDropdown/manifest.json"
       }
-    ]
+    ],
+    "logo": "./logo.png"
   },
   "devDependencies": {
     "@adalo/cli": "^0.0.38",
