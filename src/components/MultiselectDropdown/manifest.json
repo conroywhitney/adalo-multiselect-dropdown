@@ -16,22 +16,27 @@
       "name": "itemLabel",
       "displayName": "Item Label",
       "type": "text",
-      "default": "label"
+      "default": "",
+      "role": "listItem",
+      "reference": "itemList"
     },
     {
-      "name": "itemValue",
-      "displayName": "Item Value",
-      "type": "text",
-      "default": "value"
-    },
-    {
-      "displayName": "Selected Changed",
-      "name": "selectChangedAction",
+      "displayName": "Every time any item is selected",
+      "name": "selectedAction",
       "type": "action",
+      "role": "listItem",
+      "reference": "itemList"
+    },
+    {
+      "displayName": "Every time any item is deselected",
+      "name": "deselectedAction",
+      "type": "action",
+      "role": "listItem",
+      "reference": "itemList",
       "arguments": [
         {
           "type": "text",
-          "displayName": "Selected Items"
+          "displayName": "Selected Item"
         }
       ]
     }

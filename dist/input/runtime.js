@@ -1,1 +1,3 @@
-export {    MultiselectDropdown as MultiselectDropdown,  } from '../../index.js'
+export {
+  MultiselectDropdown as MultiselectDropdown,
+} from '../../index.js'
