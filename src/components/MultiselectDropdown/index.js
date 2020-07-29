@@ -1,57 +1,88 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
-import MultiSelect from 'react-native-multiple-select';
+import { View } from "react-native";
+import MultiSelect from "react-native-multiple-select";
+import {
+  compose,
+  filter,
+  forEach,
+  includes,
+  isNil,
+  map,
+  reject,
+  uniq,
+  without,
+} from "ramda";
 
-const items = [{
-  id: '92iijs7yta',
-  name: 'Ondo'
-}, {
-  id: 'a0s0a8ssbsd',
-  name: 'Ogun'
-}, {
-  id: '16hbajsabsd',
-  name: 'Calabar'
-}, {
-  id: 'nahs75a5sg',
-  name: 'Lagos'
-}, {
-  id: '667atsas',
-  name: 'Maiduguri'
-}, {
-  id: 'hsyasajs',
-  name: 'Anambra'
-}, {
-  id: 'djsjudksjd',
-  name: 'Benue'
-}, {
-  id: 'sdhyaysdj',
-  name: 'Kaduna'
-}, {
-  id: 'suudydjsjd',
-  name: 'Abuja'
-  }
-];
+const generateOption = (item) => ({
+  id: item.id,
+  name: item.itemLabel,
+});
 
 class MultiselectDropdown extends Component {
   constructor(props) {
     super(props);
 
-    this.onSelectedItemsChange = this.onSelectedItemsChange.bind(this);
-
-    this.multiSelect = null;
+    this.fireDeselectedActions = this.fireDeselectedActions.bind(this);
+    this.fireSelectedActions = this.fireSelectedActions.bind(this);
+    this.generateOptions = this.generateOptions.bind(this);
+    this.handleSelectedChanged = this.handleSelectedChanged.bind(this);
+    this.itemsFromIds = this.itemsFromIds.bind(this);
 
     this.state = {
-      selectedItems : []
-    }
+      selected: [],
+    };
   }
 
-  onSelectedItemsChange(selectedItems) {
-    this.setState({ selectedItems });
+  generateOptions() {
+    const { itemList } = this.props;
+
+    if (!itemList) return [];
+
+    return compose(reject(isNil), uniq, map(generateOption))(itemList);
+  }
+
+  itemsFromIds(ids) {
+    const { itemList } = this.props;
+
+    if (!itemList) return [];
+
+    return filter((item) => includes(item.id, ids), itemList);
+  }
+
+  fireDeselectedActions({ current, previous }) {
+    const ids = without(current, previous);
+
+    forEach((item) => {
+      if (item.deselectedAction) item.deselectedAction();
+    }, this.itemsFromIds(ids));
+  }
+
+  fireSelectedActions({ current, previous }) {
+    const ids = without(previous, current);
+
+    forEach((item) => {
+      if (item.selectedAction) item.selectedAction();
+    }, this.itemsFromIds(ids));
+  }
+
+  handleSelectedChanged(current) {
+    const { itemList } = this.props;
+    const { selected: previous } = this.state;
+
+    if (!itemList) return;
+
+    this.fireDeselectedActions({ current, previous });
+    this.fireSelectedActions({ current, previous });
+    this.setState({ selected: current });
   }
 
   render() {
-    const { _height: height, _width: width, stringOverrides } = this.props;
-    const { selectedItems } = this.state;
+    const {
+      stringOverrides: { allItemsAreSelected, search, selectSomeItems },
+    } = this.props;
+    const { selected } = this.state;
+    const items = this.generateOptions();
+    const allSelected = items.length === selected.length;
 
     return (
       <View style={{ flex: 1 }}>
@@ -59,12 +90,13 @@ class MultiselectDropdown extends Component {
           hideTags
           items={items}
           uniqueKey="id"
-          ref={(component) => { this.multiSelect = component }}
-          onSelectedItemsChange={this.onSelectedItemsChange}
-          selectedItems={selectedItems}
-          selectText="Pick Items"
-          searchInputPlaceholderText="Search Items..."
-          onChangeInput={ (text)=> console.log(text)}
+          ref={(component) => {
+            this.multiSelect = component;
+          }}
+          onSelectedItemsChange={this.handleSelectedChanged}
+          selectedItems={selected}
+          selectText={allSelected ? allItemsAreSelected : selectSomeItems}
+          searchInputPlaceholderText={search}
           altFontFamily="ProximaNova-Light"
           tagRemoveIconColor="#CCC"
           tagBorderColor="#CCC"
@@ -73,12 +105,12 @@ class MultiselectDropdown extends Component {
           selectedItemIconColor="#CCC"
           itemTextColor="#000"
           displayKey="name"
-          searchInputStyle={{ color: '#CCC' }}
+          searchInputStyle={{ color: "#CCC" }}
           submitButtonColor="#CCC"
-          submitButtonText="Submit"
+          submitButtonText="Done"
         />
         <View>
-          {this.multiSelect && this.multiSelect.getSelectedItemsExt(selectedItems)}
+          {this.multiSelect && this.multiSelect.getSelectedItemsExt(selected)}
         </View>
       </View>
     );
